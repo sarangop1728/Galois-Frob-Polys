@@ -1,0 +1,2 @@
+177,0
+S,NewtonGaloisGroup,"Input: a squarefree q-Weil polynomial P. Output: 1. The list of (roots,valuations) of P in the splitting field L, with respect to an indexing of the roots (bar(j) = 2d+1-j, and nondecreasing valuations with respect to some prime pp above p in L). 2. The Galois group H of P, as a permutation group on the roots of P, with respect to the indexing chosen in (1). 3. The complex conjugation element cc of H. 4. The splitting field L of P",0,1,0,0,0,0,0,0,0,312,,82,224,222,27,-38,-38
