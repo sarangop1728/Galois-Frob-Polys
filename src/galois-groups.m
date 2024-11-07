@@ -67,7 +67,7 @@ intrinsic NewtonGaloisGroup(Poly::RngUPolElt) -> SeqEnum, GrpPerm, GrpPermElt, F
 }
   Pol<T> := PolynomialRing(Rationals());
   P := Pol!Poly;
-  assert IsSquarefree(P);
+  error if IsSquarefree(P) eq false, Sprintf("Polynomial %o not squarefree",P);
   n := Degree(P);
   d := n div 2;
   _, q := IsPower(Integers()!Coefficient(P,0), Degree(P) div 2);

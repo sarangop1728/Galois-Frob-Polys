@@ -26,16 +26,16 @@ dim3_C = ["3.2.ab_a_a","3.4.ab_c_a","3.4.ab_a_ae"]
 dim3_D = ["3.2.ac_c_ac", "3.3.ad_j_ap", "3.2.a_a_ac", "3.7.a_a_abj"]
 dim3_E = ["3.3.a_a_aj"]
 
-paper_tables_examples = [dim2_A_s, dim2_B_s, dim2_C_s, dim2_A_ns, dim2_B_ns, dim2_C_ns, dim3_A, dim3_B, dim3_C, dim3_D, dim3_E]
+paper_table_examples = [dim2_A_s, dim2_B_s, dim2_C_s, dim2_A_ns, dim2_B_ns, dim2_C_ns, dim3_A, dim3_B, dim3_C, dim3_D, dim3_E]
+paper_table_names = ["dim2_A_s", "dim2_B_s", "dim2_C_s", "dim2_A_ns", "dim2_B_ns", "dim2_C_ns", "dim3_A", "dim3_B", "dim3_C", "dim3_D", "dim3_E"]
 
-paper_labels = []
-for labs in paper_tables_examples:
-    paper_labels += labs
+# The following function takes as input a list of LMFDB labels and returns a
+# string in the format of a magma list, whose entries are the corresponding
+# Weil polyinomials
+def label_to_poly_Magma_list(name, table_list):
+    Pol.<T> = PolynomialRing(QQ)
+    return name + " := " + str([weil_poly_from_label(Pol,lab) for lab in table_list]) + ";"
 
-Pol.<T> = PolynomialRing(QQ)
-paper_polynomials = []
-for lab in paper_labels:
-    paper_polynomials += [weil_poly_from_label(Pol,lab)]
+for x in [[paper_table_names[i], paper_table_examples[i]] for i in range(len(paper_table_names))]:
+    print(label_to_poly_Magma_list(x[0],x[1]))
 
-# Sanity check
-print({P.is_weil_polynomial() for P in paper_polynomials})
