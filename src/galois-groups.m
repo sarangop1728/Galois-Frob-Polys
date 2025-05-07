@@ -99,8 +99,9 @@ intrinsic NewtonGaloisGroup(Poly::RngUPolElt) -> SeqEnum, GrpPerm, GrpPermElt, F
     end if;
   end for;
   s := conjugateToCorrectComplexConj(cc);
-  H := Conjugate(H,s);
+  H := Conjugate(H,s^(-1));
   cc := H!(s*cc*s^(-1));
+  
   // Reorder the list of roots to coincide with the permutation action of H.
   roots_valuations := [roots_valuations[i^s]: i in [1..n]];
   // Coerce H to W2(d).
